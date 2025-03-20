@@ -9,10 +9,3 @@
     <h2>Index Page</h2>
 </body>
 </html>
-
-<?php
-
-require "./model/Expense.php";
-
-$myExpense = new Expense("Celular novo", 1999.99, 5);
-$myExpense->saveToDatabase();
