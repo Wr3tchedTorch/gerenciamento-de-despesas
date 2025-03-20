@@ -13,7 +13,7 @@ class Category
 
     public function saveToDatabase()
     {
-        require "connection.php";
+        require "../connection.php";
 
         $sql = $id == null ? "insert into Category (name) values (?)" : 
                              "insert into Category (name, id) values (?, ?)";
@@ -33,7 +33,7 @@ class Category
 
     public static function getId($id) 
     {
-        require "connection.php";
+        require "../connection.php";
 
         $sql = "select * from category where id = ?";
         $statement = $connection->prepare($sql);
@@ -49,7 +49,7 @@ class Category
 
     public static function getAll() 
     {
-        require "connection.php";
+        require "../connection.php";
 
         $sql = "select * from category";
         return $connection->query($sql);

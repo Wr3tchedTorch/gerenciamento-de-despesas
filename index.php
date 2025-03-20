@@ -14,7 +14,7 @@
         <section>
             <h2>Bem-vindo!</h2>
             <p>Este é o seu gerenciador de despesas. Para começar, faça login na sua conta.</p>
-            <a href="login.html" class="btn">Entrar</a>
+            <a href="./view/login.php" class="btn">Entrar</a>
         </section>
     </main>
 </body>

@@ -1,9 +1,11 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user'])) {
     header("location: login.php");
     die();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -28,7 +30,7 @@ if (!isset($_SESSION['user'])) {
                 </div>
                 <div class="form-group">
                     <label for="value">Valor da Despesa:</label></br>
-                    <input type="number" id="value" name="value" required>
+                    <input type="number" id="value" name="value" step=".01" required>
                 </div>
                 <div class="form-group">
                     <label for="date">Data da Despesa:</label></br>
@@ -40,12 +42,14 @@ if (!isset($_SESSION['user'])) {
                         <!-- Puxar categorias do banco de dados e usar um foreach com echo aqui, o 'value' vai ser o id da categoria -->
                         <option value="">Selecione uma categoria</option>
                         <?php
+                        
                         require '../model/Category.php';
+
                         $category = Category::getAll();
                         foreach ($category as $key => $value) {
                             echo '<option value="' . $value['id'] . '">' . $value['name']
-                                . '</option>';
-                        }
+                                . '</option>';                                
+                        }                        
                         ?>
                     </select>
                 </div>
@@ -53,6 +57,7 @@ if (!isset($_SESSION['user'])) {
                 <a href="menu.php" type="" class="btn">Voltar</a>
             </div>
         </form>
+        
         <div id="message" class="message"></div>
         <?php
         require '../model/Expense.php';
@@ -95,3 +100,7 @@ if (!isset($_SESSION['user'])) {
 </body>
 
 </html>
+
+<?php
+
+echo "bunda";
