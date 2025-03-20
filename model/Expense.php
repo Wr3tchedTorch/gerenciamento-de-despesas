@@ -19,7 +19,7 @@ class Expense
 
     public function saveToDatabase()
     {
-        require "../connection.php";
+        require "connection.php";
 
         echo $this->date;
         $sql = isset($id) ? "insert into Expense (description, cost, date, categoryId, id) values (?, ?, ?, ?, ?)" : 
@@ -44,7 +44,7 @@ class Expense
 
     public static function getAll()
     {
-        require "../connection.php";
+        require "connection.php";
 
         $sql = "select e.id, e.description as \"description\", e.cost as \"cost\", e.date as \"data\", c.id as \"category_id\", c.name as \"category_name\"
                 from expense e

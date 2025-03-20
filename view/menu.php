@@ -14,6 +14,7 @@
         <section class="menu-options">
             <a href="cadastrar-despesas.php" class="menu-button">Cadastrar Despesas</a>
             <a href="perfil.php" class="menu-button">Perfil do Usuário</a>
+            <a href="relatorios.php" class="menu-button">Relatórios</a>
         </section>
     </main>
   
