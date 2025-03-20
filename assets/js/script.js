@@ -83,3 +83,4 @@ function editProfile() {
 
     alert('Perfil atualizado com sucesso!');
 }
+
