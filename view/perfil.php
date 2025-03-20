@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
-    <link rel="stylesheet" href="...assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <header>
@@ -13,7 +13,7 @@
     <main>
         <section class="perfil-container">
             <div class="perfil-info">
-                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2Fp%2FProfile-picture-for-girls-100080626388246%2F&psig=AOvVaw1oXutIozGhOWy_q2dHqht6&ust=1742565495155000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJixir7omIwDFQAAAAAdAAAAABAJ.jpg" alt="Foto de Perfil" class="perfil-img">
+                <img src="../assets/pfp-pic.jpg" alt="Foto de Perfil" class="perfil-img">
                 <h2 id="userName">Nome do Usuário</h2>
                 <p id="userEmail">email@exemplo.com</p>
             </div>
@@ -21,6 +21,6 @@
         </section>
     </main>
    
-    <script src="../js/scripts.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>

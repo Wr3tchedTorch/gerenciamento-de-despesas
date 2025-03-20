@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Despesas</title>
-    <link rel="stylesheet" href=".../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <header>
@@ -28,12 +28,13 @@
             <div class="form-group">
                 <label for="category">Categoria da Despesa:</label></br>
                 <select id="category" class="expense" required>
+                    <!-- Puxar categorias do banco de dados e usar um foreach com echo aqui, o 'value' vai ser o id da categoria -->
                     <option value="">Selecione uma categoria</option>
-                    <option value="Alimentação">Alimentação</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Lazer">Lazer</option>
-                    <option value="Saúde">Saúde</option>
-                    <option value="Educação">Educação</option>
+                    <option value="2">Alimentação</option>
+                    <option value="3">Transporte</option>
+                    <option value="4">Lazer</option>
+                    <option value="5">Saúde</option>
+                    <option value="6">Educação</option>
                 </select>
             </div>
             <button type="submit" class="btn">Salvar</button>
@@ -41,6 +42,6 @@
         </form>
         <div id="message" class="message"></div>
     </main>
-    <script src="../js/scripts.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
