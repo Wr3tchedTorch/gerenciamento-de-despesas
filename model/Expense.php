@@ -8,12 +8,12 @@ class Expense
     public $date;
     public $categoryId;
 
-    public function __construct($description, $cost, $categoryId, $date = DATE_ATOM, $id = null)
+    public function __construct($description, $cost, $categoryId, $date = null, $id = null)
     {
         $this->description = $description;
         $this->cost = $cost;
         $this->categoryId = $categoryId;
-        $this->date = $date;
+        $this->date = $date ?? date("Y-m-d H:i:s");
         $this->id = $id;
     }
 
@@ -21,18 +21,23 @@ class Expense
     {
         require "connection.php";
 
-        $sql = $id == null ? "insert into (description, cost, date, categoryId) values (?, ?, ?, ?)" : "insert into (description, cost, date, categoryId, id) values (?, ?, ?, ?, ?)";
+        echo $this->date;
+        $sql = isset($id) ? "insert into Expense (description, cost, date, categoryId, id) values (?, ?, ?, ?, ?)" : 
+                            "insert into Expense (description, cost, date, categoryId)     values (?, ?, ?, ?)";
 
-        $connection->prepare($sql);
-        $connection->bindValue(1, $this->description);
-        $connection->bindValue(2, $this->cost);
-        $connection->bindValue(3, $this->date);
-        $connection->bindValue(4, $this->categoryId);
-        if ($id != null) {
-            $connection->bindValue(2, $this->id);
+        $statement = $connection->prepare($sql);
+        $statement->bindValue(1, $this->description);
+        $statement->bindValue(2, $this->cost);
+        $statement->bindValue(3, $this->date);
+        $statement->bindValue(4, $this->categoryId);
+
+        if (isset($id)) 
+        {
+            $statement->bindValue(5, $this->id);
         }
 
-        if (!$connection->execute()) {
+        if (!$statement->execute()) 
+        {
             throw new Exception("Erro ao salvar dados do produto no banco.");
         }
     }

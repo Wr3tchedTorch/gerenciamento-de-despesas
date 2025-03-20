@@ -17,14 +17,14 @@ class Category
 
         $sql = $id == null ? "insert into (name) values (?)" : "insert into (name, id) values (?, ?)";
 
-        $connection->prepare($sql);
-        $connection->bindValue(1, $this->name);
+        $statement = $connection->prepare($sql);
+        $statement->bindValue(1, $this->name);
         if ($id != null) 
         {
-            $connection->bindValue(2, $this->id);
+            $statement->bindValue(2, $this->id);
         }
 
-        if (!$connection->execute())
+        if (!$statement->execute())
         {
             throw new Exception("Erro ao salvar dados da categoria no banco.");
         }
