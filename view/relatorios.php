@@ -3,22 +3,21 @@ include '../controller/ReportsController.php';
 // Usando a URL para passar o mês atual 
 $selectedMonth = $_GET['mes'] ?? "todos";
 $expenses = getExpensesGraph($selectedMonth);
-
-$categorias = [];
+$categories = [];
 $allExpenses = getExpensesTable();
 
 // Agrupar
 // Gráfico de pizza
-foreach ($expenses as $despesa) {
-    $categoria = $despesa["categoria"];
-    $categorias[$categoria] = ($categorias[$categoria] ?? 0) + $despesa["valor"];
+foreach ($expenses as $expense) {
+    $category = $expense["categoria"];
+    $categories[$category] = ($categories[$category] ?? 0) + $expense["valor"];
 }
 
 // Gráfico de barras
 $meses = array_fill(1, 12, 0);
-foreach ($expenses as $despesa) {
-    $mes = $despesa["mes"];
-    $meses[$mes] += $despesa["valor"];
+foreach ($expenses as $expense) {
+    $mes = $expense["mes"];
+    $meses[$mes] += $expense["valor"];
 }
 ?>
 
@@ -29,38 +28,38 @@ foreach ($expenses as $despesa) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatórios</title>
-    <link rel="stylesheet" href="../assets/css_relatorios.css">
+    <link rel="stylesheet" href="../assets/css/css_relatorios.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <header class="header-relatorios">
-        <div class="logo"></div>
 
-        <div class="menu-drop">
-            <!-- Select para escolher o mês -->
-            <form method="GET" action="">
-                <label for="mes"></label>
-                <select name="mes" id="mes" onchange="this.form.submit()">
-                    <option value="todos" <?= $selectedMonth == "todos" ? "selected" : "" ?>>Todos os Meses</option>
-                    <?php
-                    $monthDictionary = [1 => "Janeiro", 2 => "Fevereiro", 3 => "Março", 4 => "Abril", 5 => "Maio", 6 => "Junho", 7 => "Julho", 8 => "Agosto", 9 => "Setembro", 10 => "Outubro", 11 => "Novembro", 12 => "Dezembro"];
-                    for ($i = 1; $i <= 12; $i++) {
-                        $selected = ($selectedMonth == $i) ? "selected" : "";
-                        echo "<option value='$i' $selected>{$monthDictionary[$i]}</option>";
-                    }
-                    ?>
-                </select>
-            </form>
-        </div>
+        Relatórios
 
-        <div class="user-logged"></div>
     </header>
 
     <!-- Gráficos -->
     <div class="dashboard">
         <div class="box">
             <h1 class="title">Despesas</h1>
+            <div class="menu-drop select-container">
+                <!-- Select para escolher o mês -->
+                <form  method="GET" action="">
+                    <label for="mes"></label>
+                    <select class="custom-select" name="mes" id="mes" onchange="this.form.submit()">
+                        <option value="todos" <?= $selectedMonth == "todos" ? "selected" : "" ?>>Todos os Meses</option>
+                        <?php
+                            $monthDictionary = [1 => "Janeiro", 2 => "Fevereiro", 3 => "Março", 4 => "Abril", 5 => "Maio", 6 => "Junho", 7 => "Julho", 8 => "Agosto", 9 => "Setembro", 10 => "Outubro", 11 => "Novembro", 12 => "Dezembro"];
+                            
+                            for ($i = 1; $i <= 12; $i++) {
+                                $selected = ($selectedMonth == $i) ? "selected" : "";
+                                echo "<option value='$i' $selected>{$monthDictionary[$i]}</option>";
+                            }
+                        ?>
+                    </select>
+                </form>
+            </div>
         </div>
         <div class="graficos">
             <div class="graphs">
@@ -86,12 +85,12 @@ foreach ($expenses as $despesa) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($allExpenses as $despesa): ?>
+                    <?php foreach ($allExpenses as $expense): ?>
                         <tr>
-                            <td><?= htmlspecialchars($despesa['descricao']) ?></td>
-                            <td><?= htmlspecialchars($despesa['categoria']) ?></td>
-                            <td>R$ <?= number_format($despesa['valor'], 2, ',', '.') ?></td>
-                            <td><?= date('d/m/Y', strtotime($despesa['data_completa'])) ?></td>
+                            <td><?= htmlspecialchars($expense['descricao']) ?></td>
+                            <td><?= htmlspecialchars($expense['categoria']) ?></td>
+                            <td>R$ <?= number_format($expense['valor'], 2, ',', '.') ?></td>
+                            <td><?= date('d/m/Y', strtotime($expense['data_completa'])) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -102,15 +101,16 @@ foreach ($expenses as $despesa) {
     <script>
 
         // Dados do gráfico de Pizza
-        const categorias = <?php echo json_encode(array_keys($categorias)); ?>;
-        const valores = <?php echo json_encode(array_values($categorias)); ?>;
-
+        const categories$categories = <?php echo json_encode(array_keys($categories)); ?>;
+        const valores = <?php echo json_encode(array_values($categories)); ?>;
+        
+        
         //configuração do chart js grafico pizza
         const ctxPizza = document.getElementById('graficoPizza').getContext('2d');
         new Chart(ctxPizza, {
             type: 'pie',
             data: {
-                labels: categorias,
+                labels: categories$categories,
                 datasets: [{
                     data: valores,
                     backgroundColor: ['red', 'blue', 'green', 'yellow', 'purple'],
