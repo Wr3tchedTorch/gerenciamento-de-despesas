@@ -15,7 +15,8 @@ class Category
     {
         require "connection.php";
 
-        $sql = $id == null ? "insert into (name) values (?)" : "insert into (name, id) values (?, ?)";
+        $sql = $id == null ? "insert into Category (name) values (?)" : 
+                             "insert into Category (name, id) values (?, ?)";
 
         $statement = $connection->prepare($sql);
         $statement->bindValue(1, $this->name);
