@@ -1,0 +1,140 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Cabeçalho */
+.header-relatorios {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    
+}
+
+.box {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+
+.menu-drop {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard */
+.dashboard {
+    margin:3rem 10rem  ;
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Gráficos */
+.graficos {
+    padding-top: 2rem;
+    display: flex;
+    gap: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.graphs {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 30%;
+    max-height: 50%;
+    height: 35rem;
+    font-weight: lighter;
+    font-size: smaller;
+    font-style: normal;
+    color: #333;
+   
+}
+/* tabela */
+.tabela-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+table {
+    width: 80%; 
+    max-width: 1200px;
+    border-collapse: collapse; 
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left; 
+    border-bottom: 1px solid #ddd; 
+}
+
+table th {
+    font-size: 16px; 
+    font-weight: bold; 
+}
+
+table td {
+    font-size: 14px;
+    color: #333;
+}
+
+table tfoot {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+/* select */
+.custom-select {
+    appearance: none; 
+    outline: none; 
+    background-color: white;
+    border:  none;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    width: 100%; 
+    font-family: Arial, sans-serif;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tZG93biI+PHBhdGggZD0ibTYgOSA2IDYgNi02Ii8+PC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 30px; 
+}
+.select-container:hover{
+    border-color: #0d1c2c;  
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}

@@ -19,15 +19,15 @@ function getExpensesGraph($selectedMonth)
     }
 
     //prepara a query para ser utilizada
-    $x = $connection->prepare($query);
+    $query = $connection->prepare($query);
 
     if ($selectedMonth !== "todos") {
-        $x->bindParam(':mes', $selectedMonth, PDO::PARAM_INT);
+        $query->bindParam(':mes', $selectedMonth, PDO::PARAM_INT);
     }
 
     //utiliza a query
-    $x->execute();
-    return $x->fetchAll(PDO::FETCH_ASSOC);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getExpensesTable() {
